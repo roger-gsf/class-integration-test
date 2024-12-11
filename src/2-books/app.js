@@ -9,15 +9,6 @@ let books = [];
 // const findBookById = (id) => books.find((book) => book.id === id);
 // const findBookByTitle = (title) => books.find((book) => book.title === title);
 
-
-app.use((req, res, next) => {
-    if (req.headers['content-type'] !== 'application/json') {
-        return res.status(400).json({ error: 'Content-Type must be application/json' });
-    }
-    next();
-});
-
-
 app.post('/books', (req, res) => {
     const { title, publisher } = req.body;
 
@@ -38,7 +29,7 @@ app.post('/books', (req, res) => {
 
 
 app.get('/books', (req, res) => {
-    res.json(books);
+    res.status(200).json(books);
 });
 
 
