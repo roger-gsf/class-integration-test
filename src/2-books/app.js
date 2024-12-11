@@ -10,6 +10,7 @@ let books = [];
 // const findBookByTitle = (title) => books.find((book) => book.title === title);
 
 
+// To add a new book
 app.post('/books', (req, res) => {
     const { title, publisher } = req.body;
 
@@ -29,11 +30,13 @@ app.post('/books', (req, res) => {
 });
 
 
+// To list all books
 app.get('/books', (req, res) => {
     res.status(200).json(books);
 });
 
 
+// To update book data by id
 app.put('/books/:id', (req, res) => {
     const id = parseInt(req.params.id, 10);
     const { title, publisher } = req.body;
@@ -53,6 +56,7 @@ app.put('/books/:id', (req, res) => {
 });
 
 
+// To remove a book by id
 app.delete('/books/:id', (req, res) => {
     const id = parseInt(req.params.id, 10);
     const bookIndex = books.findIndex((book) => book.id === id);
@@ -66,6 +70,7 @@ app.delete('/books/:id', (req, res) => {
 });
 
 
+// To loan a book by title
 app.post('/loans', (req, res) => {
     const { title } = req.body;
 
@@ -84,6 +89,7 @@ app.post('/loans', (req, res) => {
 });
 
 
+// To return a book by title
 app.post('/returns', (req, res) => {
     const { title } = req.body;
 
